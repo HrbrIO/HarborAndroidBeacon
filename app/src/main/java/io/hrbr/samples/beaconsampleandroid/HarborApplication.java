@@ -1,4 +1,4 @@
-package io.hrbr.beacon;
+package io.hrbr.samples.beaconsampleandroid;
 
 import android.app.Activity;
 import android.app.Application;
@@ -6,6 +6,8 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+
+import io.hrbr.beacon.HarborLogger;
 
 public class HarborApplication extends Application implements ActivityLifecycleCallbacks {
 
@@ -20,7 +22,6 @@ public class HarborApplication extends Application implements ActivityLifecycleC
 
     public static Context sharedContext;
 
-    //public static BeaconSingleton mBeaconSingleton;
     protected static HarborLogger mHarborLogger;
 
     private boolean wantsHeartbeat   = true;
@@ -41,9 +42,7 @@ public class HarborApplication extends Application implements ActivityLifecycleC
         registerActivityLifecycleCallbacks(this);
         Log.d(TAG, "onCreate");
 
-        //mBeaconSingleton = BeaconSingleton.getInstance(sharedContext, mApiKey, mAppVersionId, mBeaconVersionId, mBeaconInstanceId);
-
-        mHarborLogger = new HarborLogger(sharedContext, wantsHeartbeat, wantsGeoLocation);
+        mHarborLogger = new HarborLogger(sharedContext, mApiKey, mAppVersionId, mBeaconVersionId, mBeaconInstanceId, wantsHeartbeat, wantsGeoLocation);
         mHarborLogger.appStart();
     }
 

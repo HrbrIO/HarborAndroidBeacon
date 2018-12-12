@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BeaconSampleAndroid</string>
+    <string name="harbor_beacons">Harbor Beacons!</string>
 </resources>

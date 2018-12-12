@@ -48,11 +48,15 @@ public class HarborLogger {
     private FusedLocationProviderClient mFusedLocationClient;
     private Handler mHeartBeatHandler;
 
-    public HarborLogger(Context context, boolean withHeartbeat, boolean withGeolocation) {
+    public BeaconSingleton mBeaconSingleton;
+
+    public HarborLogger(Context context, String apiKey, String appVersionId, String beaconVersionId, String beaconInstanceId, boolean withHeartbeat, boolean withGeolocation) {
         mCtx = context;
         mWithHeartbeat = withHeartbeat;
         mWithGeolocation = withGeolocation;
         mDwellTimers = new HashMap<String, Long>();
+
+        mBeaconSingleton = BeaconSingleton.getInstance(context, apiKey, appVersionId, beaconVersionId, beaconInstanceId);
 
         if (mWithHeartbeat)   setupHeartbeat();
         if (mWithGeolocation) setupGeolocation();
@@ -60,7 +64,7 @@ public class HarborLogger {
 
     public void log(final String msgType, JSONObject json) {
         Log.d(TAG, "Sending Harbor Beacon of type: " + msgType);
-        //if (mBeaconSingleton != null) mBeaconSingleton.log(msgType, json);
+        if (mBeaconSingleton != null) mBeaconSingleton.log(msgType, json);
     }
 
     public void log(final String msgType) {
