@@ -7,7 +7,7 @@ import io.hrbr.beacon.HarborLogger;
 
 public class HarborActivity extends AppCompatActivity {
 
-    private static final String TAG = "HarborApplication";
+    private static final String TAG = "HarborActivity";
 
     protected String SCREEN;// = "HarborBeaconActivity";
 
