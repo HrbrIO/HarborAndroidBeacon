@@ -72,15 +72,15 @@ To get started with the Quickstart application follow these steps:
 
 ### Beacon Functions
 
--`mHarborLogger.appStart()`
--`mHarborLogger.appBackground()`
--`mHarborLogger.appForeground()`
--`mHarborLogger.appKill()`
--`mHarborLogger.startHeartbeat()`
--`mHarborLogger.stopHeartbeat()`
--`mHarborLogger.logLocation(location)`
--`mHarborLogger.startScreenDwell(viewName)`
--`mHarborLogger.stopScreenDwell(viewName)`
+* `mHarborLogger.appStart()`
+* `mHarborLogger.appBackground()`
+* `mHarborLogger.appForeground()`
+* `mHarborLogger.appKill()`
+* `mHarborLogger.startHeartbeat()`
+* `mHarborLogger.stopHeartbeat()`
+* `mHarborLogger.logLocation(location)`
+* `mHarborLogger.startScreenDwell(viewName)`
+* `mHarborLogger.stopScreenDwell(viewName)`
 
 ## License
 
