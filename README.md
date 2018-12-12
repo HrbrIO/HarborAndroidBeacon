@@ -14,8 +14,6 @@ This project uses/requires:
 
 If you haven't used Harbor before, welcome! You'll need to [Sign up for a Harbor account](https://www.hrbr.io/try-hrbr) first.
 
-1. Open `BeaconSampleAndroid` from Android Studio.
-
 ## BeaconSample
 
 ### Running the Beacon Sample
@@ -52,7 +50,7 @@ To get started with the Quickstart application follow these steps:
 
 8. Run the Beacon Sample app on your Android device or simulator.
 
-<img width="700px" src="images/samples/home_screen.png"/>
+<img width="200px" src="images/samples/home_screen.png"/>
 
 9. Once you have your app running, you should beacons on the [Developer View page](https://cloud.hrbr.io/#!/apps/list) for your Application.!
 
