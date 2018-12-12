@@ -109,7 +109,7 @@ public class BeaconSingleton {
 
     private class BeaconRequest extends JsonObjectRequest {
 
-        protected static final String BASE_URL = "https://harbor-stream.herokuapp.com/beacon";
+        protected static final String BASE_URL = "https://harbor-stream.hrbr.io/beacon";
 
         private String mApiKey;
         private String mAppVersionId;

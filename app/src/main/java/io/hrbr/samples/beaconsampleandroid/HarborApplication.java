@@ -13,24 +13,14 @@ public class HarborApplication extends Application implements ActivityLifecycleC
 
     private static final String TAG = "HarborApplication";
 
-    private static String mApiKey = "YOUR_ORGANIZATION_API_KEY_GOES_HERE";
-    private static String mAppVersionId = "YOUR_APPLICATION_ID_GOES_HERE";
-    private static String mBeaconVersionId = "YOUR_BEACON_ID_GOES_HERE";
-    private static String mBeaconInstanceId = "A_UNIQUE_DEVICE_ID_GOES_HERE";
-
     public static HarborApplication thisApplication;
 
-    public static Context sharedContext;
-
-    protected static HarborLogger mHarborLogger;
-
-    private boolean wantsHeartbeat   = true;
-    private boolean wantsGeoLocation = true;
+    protected HarborLogger mHarborLogger;
 
     private int activityReferences = 0;
     private boolean isActivityChangingConfigurations = false;
 
-    public static HarborLogger getLogger() {
+    public HarborLogger getLogger() {
         return mHarborLogger;
     }
 
@@ -38,11 +28,20 @@ public class HarborApplication extends Application implements ActivityLifecycleC
     public void onCreate() {
         super.onCreate();
         thisApplication = this;
-        sharedContext = getApplicationContext();
+
         registerActivityLifecycleCallbacks(this);
         Log.d(TAG, "onCreate");
 
-        mHarborLogger = new HarborLogger(sharedContext, mApiKey, mAppVersionId, mBeaconVersionId, mBeaconInstanceId, wantsHeartbeat, wantsGeoLocation);
+        String mApiKey = "YOUR_ORGANIZATION_API_KEY_GOES_HERE";
+        String mAppVersionId = "YOUR_APPLICATION_ID_GOES_HERE";
+        String mBeaconVersionId = "YOUR_BEACON_ID_GOES_HERE";
+        String mBeaconInstanceId = "A_UNIQUE_DEVICE_ID_GOES_HERE";
+
+        boolean mWantsHeartbeat   = true;
+        boolean mWantsGeoLocation = true;
+
+        Context sharedContext = getApplicationContext();
+        mHarborLogger = new HarborLogger(sharedContext, mApiKey, mAppVersionId, mBeaconVersionId, mBeaconInstanceId, mWantsHeartbeat, mWantsGeoLocation);
         mHarborLogger.appStart();
     }
 

@@ -24,33 +24,33 @@ To get started with the Quickstart application follow these steps:
 
 1. Open this `BeaconSampleAndroid` in Android Studio
 
-<img width="700px" src="images/samples/xcode_beacon_sample.png"/>
+<img width="700px" src="images/samples/androidstudio_beacon_sample.png"/>
 
 2. Copy your organization API Key from the [API Keys page](https://cloud.hrbr.io/#!/account/apikeys).
 
 <img width="700px" src="images/samples/copy_organization_api_key.png"/>
 
-3. Paste your organization API Key from the earlier step in the `Info.plist`.
+3. Paste your organization API Key from the earlier step in the `HarborApplication.java`.
 
-<img width="700px" src="images/samples/xcode_api_key.png"/>
+<img width="700px" src="images/samples/androidstudio_api_key.png"/>
 
 4. Copy your **AppVersionID** from the specific [Applications page](https://cloud.hrbr.io/#!/apps/list).
 
 <img width="700px" src="images/samples/copy_appversionid.png"/>
 
-5. Paste your **AppVersionID** in the `HarborLogger.swift`.
+5. Paste your **AppVersionID** in the `HarborApplication.java`.
 
-<img width="700px" src="images/samples/xcode_appversionid.png"/>
+<img width="700px" src="images/samples/androidstudio_appversionid.png"/>
 
 6. Copy your **Beacon Version ID** from the specific [Edit Beacon page](https://cloud.hrbr.io/#!/apps/list) for the Beacons for your Application.
 
 <img width="700px" src="images/samples/copy_beacon_version_id.png"/>
 
-7. Paste your **Beacon Version ID** in the `HarborLogger.swift`.
+7. Paste your **Beacon Version ID** in the `HarborApplication.java`.
 
-<img width="700px" src="images/samples/xcode_beaconversionid.png"/>
+<img width="700px" src="images/samples/androidstudio_beaconversionid.png"/>
 
-8. Run the Beacon Sample app on your iOS device or simulator.
+8. Run the Beacon Sample app on your Android device or simulator.
 
 <img width="700px" src="images/samples/home_screen.png"/>
 
@@ -74,15 +74,15 @@ To get started with the Quickstart application follow these steps:
 
 ### Beacon Functions
 
--`HarborLogger.appStart()`
--`HarborLogger.appBackground()`
--`HarborLogger.appForeground()`
--`HarborLogger.appKill()`
--`HarborLogger.startHeartbeat()`
--`HarborLogger.stopHeartbeat()`
--`HarborLogger.logLocation(location)`
--`HarborLogger.startScreenDwell(viewName)`
--`HarborLogger.stopScreenDwell(viewName)`
+-`mHarborLogger.appStart()`
+-`mHarborLogger.appBackground()`
+-`mHarborLogger.appForeground()`
+-`mHarborLogger.appKill()`
+-`mHarborLogger.startHeartbeat()`
+-`mHarborLogger.stopHeartbeat()`
+-`mHarborLogger.logLocation(location)`
+-`mHarborLogger.startScreenDwell(viewName)`
+-`mHarborLogger.stopScreenDwell(viewName)`
 
 ## License
 
