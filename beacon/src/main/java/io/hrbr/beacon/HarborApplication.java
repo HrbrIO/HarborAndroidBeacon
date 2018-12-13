@@ -1,15 +1,12 @@
-package io.hrbr.samples.beaconsampleandroid;
+package io.hrbr.beacon;
 
 import android.app.Activity;
 import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
-import io.hrbr.beacon.HarborLogger;
-
-public class HarborApplication extends Application implements ActivityLifecycleCallbacks {
+public abstract class HarborApplication extends Application implements Application.ActivityLifecycleCallbacks {
 
     private static final String TAG = "HarborApplication";
 
@@ -19,6 +16,39 @@ public class HarborApplication extends Application implements ActivityLifecycleC
 
     private int activityReferences = 0;
     private boolean isActivityChangingConfigurations = false;
+
+    /**
+     * Method to enable/disable Harbor Heartbeat updates
+     * @return true|false
+     */
+    public abstract boolean wantsHeartbeat();
+
+    /**
+     * Method to enable/disable Harbor Geolocation updates
+     * @return true|false
+     */
+    public abstract boolean wantsGeolocation();
+
+    /**
+     * Method to return your Harbor Organization API Key
+     * @return "YOUR_ORGANIZATION_API_KEY_GOES_HERE"
+     */
+    protected abstract String getApiKey();
+    /**
+     * Method to return your Harbor Application ID
+     * @return "YOUR_APPLICATION_ID_GOES_HERE"
+     */
+    public abstract String getAppVersionId();
+    /**
+     * Method to return your Harbor Beacon Version ID
+     * @return "YOUR_BEACON_ID_GOES_HERE"
+     */
+    public abstract String getBeaconVersionId();
+    /**
+     * Method to return your Harbor Beacon Instance ID
+     * @return "A_UNIQUE_DEVICE_ID_GOES_HERE"
+     */
+    public abstract String getBeaconInstanceId();
 
     public HarborLogger getLogger() {
         return mHarborLogger;
@@ -32,13 +62,13 @@ public class HarborApplication extends Application implements ActivityLifecycleC
         registerActivityLifecycleCallbacks(this);
         Log.d(TAG, "onCreate");
 
-        String mApiKey = "YOUR_ORGANIZATION_API_KEY_GOES_HERE";
-        String mAppVersionId = "YOUR_APPLICATION_ID_GOES_HERE";
-        String mBeaconVersionId = "YOUR_BEACON_ID_GOES_HERE";
-        String mBeaconInstanceId = "A_UNIQUE_DEVICE_ID_GOES_HERE";
+        String mApiKey = getApiKey();
+        String mAppVersionId = getAppVersionId();
+        String mBeaconVersionId = getBeaconVersionId();
+        String mBeaconInstanceId = getBeaconInstanceId();
 
-        boolean mWantsHeartbeat   = true;
-        boolean mWantsGeoLocation = true;
+        boolean mWantsHeartbeat   = wantsHeartbeat();
+        boolean mWantsGeoLocation = wantsGeolocation();
 
         Context sharedContext = getApplicationContext();
         mHarborLogger = new HarborLogger(sharedContext, mApiKey, mAppVersionId, mBeaconVersionId, mBeaconInstanceId, mWantsHeartbeat, mWantsGeoLocation);
