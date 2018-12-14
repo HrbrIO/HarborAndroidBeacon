@@ -1,3 +1,19 @@
+/*
+ * Copyright © 2018 HarborIO, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.hrbr.beacon;
 
 import android.content.Context;
@@ -20,6 +36,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A singleton for sending requests to the Harbor Beacon service.
+ *
+ * <p>Calling {@link #log(String, JSONObject)} will enqueue the given Request for dispatch,
+ * resolving from either cache or network on a worker thread, and then delivering a parsed
+ * response on the main thread.
+ */
 public class BeaconSingleton {
 
     protected static final String TAG = "BeaconSingleton";
@@ -47,6 +70,16 @@ public class BeaconSingleton {
         mRequestQueue = getRequestQueue();
     }
 
+    /**
+     * Create or return the static instance of the BeaconSingleton.
+     *
+     * @param context
+     * @param apiKey
+     * @param appVersionId
+     * @param beaconVersionId
+     * @param beaconInstanceId
+     * @return The Beacon Singleton
+     */
     public static synchronized BeaconSingleton getInstance(Context context, String apiKey, String appVersionId, String beaconVersionId, String beaconInstanceId) {
         if (mInstance == null) {
             mInstance = new BeaconSingleton(context, apiKey, appVersionId, beaconVersionId, beaconInstanceId);
@@ -54,6 +87,11 @@ public class BeaconSingleton {
         return mInstance;
     }
 
+    /**
+     * Create or return the static instance of the RequestQueue.
+     *
+     * @return The request dispatch queue
+     */
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             // getApplicationContext() is key, it keeps you from leaking the
@@ -63,10 +101,24 @@ public class BeaconSingleton {
         return mRequestQueue;
     }
 
+    /**
+     *
+     * @param req The Request
+     * @param <T>
+     */
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
 
+    /**
+     * Queue a request for sending.
+     *
+     * @param msgType
+     * @param json
+     * @param timestamp
+     * @param listener
+     * @param errorListener
+     */
     public void log(final String msgType, JSONObject json, long timestamp, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
 
         BeaconRequest request = new BeaconRequest(
@@ -82,6 +134,13 @@ public class BeaconSingleton {
         addToRequestQueue(request);
     }
 
+    /**
+     * Queue a request for sending.
+     *
+     * @param msgType
+     * @param json
+     * @param timestamp
+     */
     public void log(final String msgType, JSONObject json, long timestamp) {
         log(msgType, json, timestamp, new Response.Listener<JSONObject>() {
 
@@ -99,10 +158,21 @@ public class BeaconSingleton {
             });
     }
 
+    /**
+     * Queue a request for sending.
+     *
+     * @param msgType
+     * @param json
+     */
     public void log(final String msgType, JSONObject json) {
         log(msgType, json, AUTO_TIMESTAMP);
     }
 
+    /**
+     * Queue a request for sending.
+     *
+     * @param msgType
+     */
     public void log(final String msgType) {
         log(msgType, null);
     }

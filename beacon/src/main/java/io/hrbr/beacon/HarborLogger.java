@@ -1,3 +1,19 @@
+/*
+ * Copyright © 2018 HarborIO, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.hrbr.beacon;
 
 import android.Manifest;
@@ -22,6 +38,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Convenience class for sending Harbor Beacons
+ *
+ */
 public class HarborLogger {
 
     private static final String TAG = "HarborLogger";
@@ -50,6 +70,17 @@ public class HarborLogger {
 
     public BeaconSingleton mBeaconSingleton;
 
+    /**
+     * Create the logger
+     *
+     * @param context
+     * @param apiKey
+     * @param appVersionId
+     * @param beaconVersionId
+     * @param beaconInstanceId
+     * @param withHeartbeat
+     * @param withGeolocation
+     */
     public HarborLogger(Context context, String apiKey, String appVersionId, String beaconVersionId, String beaconInstanceId, boolean withHeartbeat, boolean withGeolocation) {
         mCtx = context;
         mWithHeartbeat = withHeartbeat;
@@ -62,37 +93,65 @@ public class HarborLogger {
         if (mWithGeolocation) setupGeolocation();
     }
 
+    /**
+     * Log a message
+     *
+     * @param msgType
+     * @param json
+     */
     public void log(final String msgType, JSONObject json) {
         Log.d(TAG, "Sending Harbor Beacon of type: " + msgType);
         if (mBeaconSingleton != null) mBeaconSingleton.log(msgType, json);
     }
 
+    /**
+     * Log a message
+     *
+     * @param msgType
+     */
     public void log(final String msgType) {
         log(msgType, null);
     }
 
+    /**
+     * Send an APP_START_MSG beacon
+     *
+     */
     public void appStart() {
         log(APP_START_MSG);
     }
 
+    /**
+     * Send an APP_BG_MSG beacon
+     *
+     */
     public void appBackground() {
         if (mWithGeolocation) stopLocationUpdates();
         if (mWithHeartbeat)   stopHeartbeat();
         log(APP_BG_MSG);
     }
 
+    /**
+     * Send an APP_FG_MSG beacon
+     *
+     */
     public void appForeground() {
         log(APP_FG_MSG);
         if (mWithHeartbeat)   startHeartbeat();
         if (mWithGeolocation) startLocationUpdates();
     }
 
+    /**
+     * Send an APP_KILL_MSG beacon
+     *
+     */
     public void appKill() {
         log(APP_KILL_MSG);
     }
 
-
     /**
+     * Send an SCREEN_VIEW beacon
+     *
      * When an activity becomes visible Activity.onResume you should call this w/
      * the activity name.
      * - It immediately sends a SCREEN_VIEW Beacon
@@ -114,6 +173,8 @@ public class HarborLogger {
     }
 
     /**
+     * Send an SCREEN_DWELL beacon
+     *
      * When an activity becomes invisible Activity.onPause you should call this w/
      * the activity name
      * - It stops the timer and sends the SCREEN_DWELL Beacon
@@ -140,6 +201,11 @@ public class HarborLogger {
         }
     }
 
+    /**
+     * Send an GEOLOCATION beacon
+     *
+     * @param loc
+     */
     public void logLocation(Location loc) {
         JSONObject json = new JSONObject();
         try {
@@ -226,9 +292,7 @@ public class HarborLogger {
                     mLocationCallback,
                     null /* Looper */);
         }
-
     }
-
 
     private void setupHeartbeat() {
         if (!mWithHeartbeat) return;
