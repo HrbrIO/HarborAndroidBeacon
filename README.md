@@ -8,11 +8,16 @@ Getting started with Harbor Beacon on Android:
 ## Setup
 
 This project uses/requires:
- - Android Studio.
+ - Android Studio
  - SDK Version API 23: Android 6.0 (Marshmallow)
  - Google Play Services
+ - Maven/JitPack
 
 If you haven't used Harbor before, welcome! You'll need to [Sign up for a Harbor account](https://www.hrbr.io/try-hrbr) first.
+
+### JitPack 
+
+1. Install [JitPack](https://jitpack.io/#HrbrIO/HarborAndroidBeacon/0.2.1). 
 
 ## BeaconSample
 
@@ -28,7 +33,7 @@ To get started with the Quickstart application follow these steps:
 
 <img width="700px" src="images/samples/copy_organization_api_key.png"/>
 
-3. Paste your organization API Key from the earlier step in the `HarborApplication.java`.
+3. Paste your organization API Key from the earlier step in the `MyApplication.java`.
 
 <img width="700px" src="images/samples/androidstudio_api_key.png"/>
 
@@ -36,7 +41,7 @@ To get started with the Quickstart application follow these steps:
 
 <img width="700px" src="images/samples/copy_appversionid.png"/>
 
-5. Paste your **AppVersionID** in the `HarborApplication.java`.
+5. Paste your **AppVersionID** in the `MyApplication.java`.
 
 <img width="700px" src="images/samples/androidstudio_appversionid.png"/>
 
@@ -44,7 +49,7 @@ To get started with the Quickstart application follow these steps:
 
 <img width="700px" src="images/samples/copy_beacon_version_id.png"/>
 
-7. Paste your **Beacon Version ID** in the `HarborApplication.java`.
+7. Paste your **Beacon Version ID** in the `MyApplication.java`.
 
 <img width="700px" src="images/samples/androidstudio_beaconversionid.png"/>
 
