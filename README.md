@@ -1,9 +1,9 @@
-# BeaconSampleAndroid
+# HarborAndroidBeacon
 
-Getting started with Harbor Beacon on Android:
+Android library for sending Harbor Beacons to the Harbor Service in Android-java apps:
 
 - [Setup](#setup) - Get setup
-- [Beacon Sample](#BeaconSample) - Run the Beacon Sample app
+- [HarborAndroidBeacon](#HarborAndroidBeacon) - Run the Beacon Sample app
 
 ## Setup
 
@@ -19,13 +19,13 @@ If you haven't used Harbor before, welcome! You'll need to [Sign up for a Harbor
 
 1. Install [JitPack](https://jitpack.io/#HrbrIO/HarborAndroidBeacon/0.2.1). 
 
-## BeaconSample
+## HarborAndroidBeacon
 
 ### Running the Beacon Sample
 
 To get started with the Quickstart application follow these steps:
 
-1. Open this `BeaconSampleAndroid` in Android Studio
+1. Open this `HarborAndroidBeacon` in Android Studio
 
 <img width="700px" src="images/samples/androidstudio_beacon_sample.png"/>
 
@@ -89,4 +89,4 @@ To get started with the Quickstart application follow these steps:
 
 ## License
 
-This project is licensed under the [Apache License, Version 2.0](https://github.com/HrbrIO/BeaconSampleAndroid/blob/master/LICENSE)
+This project is licensed under the [Apache License, Version 2.0](https://github.com/HrbrIO/HarborAndroidBeacon/blob/master/LICENSE)
