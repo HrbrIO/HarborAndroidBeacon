@@ -3,6 +3,7 @@ package io.hrbr.samples.beaconsampleandroid;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import io.hrbr.beacon.HarborApplication;
 import io.hrbr.beacon.HarborLogger;
 
 public class HarborActivity extends AppCompatActivity {

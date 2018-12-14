@@ -6,6 +6,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+/**
+ * This is an abstract class for creating an Application that will send a
+ * variety of Harbor Beacon messages.
+ *
+ */
 public abstract class HarborApplication extends Application implements Application.ActivityLifecycleCallbacks {
 
     private static final String TAG = "HarborApplication";
@@ -34,22 +39,30 @@ public abstract class HarborApplication extends Application implements Applicati
      * @return "YOUR_ORGANIZATION_API_KEY_GOES_HERE"
      */
     protected abstract String getApiKey();
+
     /**
      * Method to return your Harbor Application ID
      * @return "YOUR_APPLICATION_ID_GOES_HERE"
      */
     public abstract String getAppVersionId();
+
     /**
      * Method to return your Harbor Beacon Version ID
      * @return "YOUR_BEACON_ID_GOES_HERE"
      */
     public abstract String getBeaconVersionId();
+
     /**
      * Method to return your Harbor Beacon Instance ID
      * @return "A_UNIQUE_DEVICE_ID_GOES_HERE"
      */
     public abstract String getBeaconInstanceId();
 
+    /**
+     * Method to return the {@link io.hrbr.beacon.HarborLogger} instance
+     *
+     * @return
+     */
     public HarborLogger getLogger() {
         return mHarborLogger;
     }
