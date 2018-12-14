@@ -17,7 +17,7 @@ If you haven't used Harbor before, welcome! You'll need to [Sign up for a Harbor
 
 ### JitPack 
 
-1. Install [JitPack](https://jitpack.io/#HrbrIO/HarborAndroidBeacon/0.2.1). 
+1. Install [JitPack](https://jitpack.io/#HrbrIO/HarborAndroidBeacon/0.2.2). 
 
 ## HarborAndroidBeacon
 
